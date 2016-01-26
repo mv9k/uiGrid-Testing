@@ -18,6 +18,13 @@
             showColumnFooter: true,
             columnDefs: [
                 { field: 'name' },
+                //{ field: 'height', cellTemplate: 'height'},
+                { field: 'eye_color' },
+                { field: 'gender' },
+                { field: 'hair_color' }
+            ],
+            columnDefsx: [
+                { field: 'name' },
                 { field: 'company' },
                 { field: 'email', name: 'emailAddress',
                     cellTemplate: '<a class="text-input" ng-href="mailto:{{ row.entity.email }}" ng-click="$event.stopPropagation()">'
@@ -50,13 +57,14 @@
 
         // private function
         function getData() {
-            return $http.get('http://ui-grid.info/data/500_complex.json')
+            //return $http.get('http://ui-grid.info/data/500_complex.json')
+            return $http.get('http://swapi.co/api/people')
                 .then(function (response) {
-                    response.data.forEach(function (row) {
-                        row.registered = Date.parse(row.registered);
-                    });
-                    console.log(response.data[0]);
-                    return response.data;
+                    //response.data.forEach(function (row) {
+                    //    row.registered = Date.parse(row.registered);
+                    //});
+                    console.log(response.data.results[0]);
+                    return response.data.results;
                 });
         }
 
