@@ -19,33 +19,11 @@
             columnDefs: [
                 { field: 'name' },
                 //{ field: 'height', cellTemplate: 'height'},
-                { field: 'eye_color' },
-                { field: 'gender' },
-                { field: 'hair_color' }
-            ],
-            columnDefsx: [
-                { field: 'name' },
-                { field: 'company' },
-                { field: 'email', name: 'emailAddress',
-                    cellTemplate: '<a class="text-input" ng-href="mailto:{{ row.entity.email }}" ng-click="$event.stopPropagation()">'
-                        + '{{ row.entity.email }}</a>' },
-                { field: 'phone' },
-                { field: 'balance', width: 120 },
-                { field: 'age', width: 70, aggregationType: uiGridConstants.aggregationTypes.avg },
-                { field: 'about', enableSorting: false,
-                    cellTooltip: function(row, col) {
-                        return row.entity.about;
-                    }
-                },
-                // unused fields from json file
-                //{ field: 'id' },
-                //{ field: 'guid' },
-                //{ field: 'isActive' },
-                //{ field: 'registration' },
-                //{ field: 'friends' },
-                //{ field: 'picture' },
-                //{ field: 'gender' },
-                //{ field: 'address' },
+                { field: 'model' },
+                { field: 'manufacturer' },
+                { field: 'starship_class' },
+                { field: 'crew' },
+                { field: 'cost_in_credits'}
             ],
             paginationPageSizes: [25, 50, 75],
             paginationPageSize: 25
@@ -58,7 +36,7 @@
         // private function
         function getData() {
             //return $http.get('http://ui-grid.info/data/500_complex.json')
-            return $http.get('http://swapi.co/api/people')
+            return $http.get('http://swapi.co/api/starships')
                 .then(function (response) {
                     //response.data.forEach(function (row) {
                     //    row.registered = Date.parse(row.registered);
