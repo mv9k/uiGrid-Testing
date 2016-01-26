@@ -1,0 +1,22 @@
+h3 {
+    margin-top: 0;
+}
+h4 {
+    margin-top: 6px !important;
+}
+.top-margin {
+    margin-top: 50px;
+}
+input[type=text], button {
+    border: black 1px solid;
+}
+.my-grid {
+    /*width: 500px;*/
+    height: 500px;
+}
+.ui-grid-row:hover .ui-grid-cell {
+    background: lightblue;
+}
+.text-anchor {
+    text-decoration: underline;
+}
