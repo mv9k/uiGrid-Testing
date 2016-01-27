@@ -18,12 +18,13 @@
             showColumnFooter: true,
             columnDefs: [
                 { field: 'name' },
-                //{ field: 'height', cellTemplate: 'height'},
-                { field: 'model' },
+                { field: 'url' },
+                { field: 'model', cellClass: 'model-class' },
                 { field: 'manufacturer' },
                 { field: 'starship_class' },
                 { field: 'crew' },
-                { field: 'cost_in_credits'}
+                { field: 'pilots' },
+                { field: 'cost_in_credits' }
             ],
             paginationPageSizes: [25, 50, 75],
             paginationPageSize: 25
@@ -38,9 +39,11 @@
             //return $http.get('http://ui-grid.info/data/500_complex.json')
             return $http.get('http://swapi.co/api/starships')
                 .then(function (response) {
-                    //response.data.forEach(function (row) {
-                    //    row.registered = Date.parse(row.registered);
-                    //});
+                    response.data.results.forEach(function (row) {
+                        $http.get(row.pilots[0]).then(function (resp) {
+                            row.pilots = resp.data.name;
+                        });
+                    });
                     console.log(response.data.results[0]);
                     return response.data.results;
                 });
