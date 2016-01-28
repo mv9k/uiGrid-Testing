@@ -4,27 +4,29 @@
     angular.module('homeService', [])
         .service('homeService', homeService);
 
-    homeService.$inject = ['$http', 'uiGridConstants'];
+    homeService.$inject = ['$http', 'uiGridConstants', 'ngDialog'];
 
-    function homeService($http, uiGridConstants) {
+    function homeService($http, uiGridConstants, ngDialog) {
 
         // list everything
         var hs = this;
         //hs.myGrid = { data: undefined };
+        hs.clickUrl = clickUrl;
         hs.myGrid = {
             data: undefined,
             enableFiltering: true,
             enableFullRowSelection: true,
             showColumnFooter: true,
             columnDefs: [
-                { field: 'name' },
+                { field: 'name', name: 'Ship name' },
                 { field: 'url' },
                 { field: 'model', cellClass: 'model-class' },
                 { field: 'manufacturer' },
                 { field: 'starship_class' },
                 { field: 'crew' },
                 { field: 'pilots' },
-                { field: 'cost_in_credits' }
+                { field: 'cost_in_credits' },
+                { field: 'url', name: 'INFO', cellTemplate: '<a ng-click="hs.clickUrl(row.entity.name, row.entity.model, row.entity.manufacturer)">' + '{{ row.entity.url }}' + '</a>' }
             ],
             paginationPageSizes: [25, 50, 75],
             paginationPageSize: 25
@@ -33,6 +35,13 @@
         getData().then(function(data){
             hs.myGrid.data = data;
         });
+
+        function clickUrl() {
+            ngDialog.open({
+                template: '<p>URL INFO</p>',
+                plain: true
+            });
+        }
 
         // private function
         function getData() {
