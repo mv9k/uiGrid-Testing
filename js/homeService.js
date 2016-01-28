@@ -11,7 +11,6 @@
         // list everything
         var hs = this;
         //hs.myGrid = { data: undefined };
-        hs.clickUrl = clickUrl;
         hs.myGrid = {
             data: undefined,
             enableFiltering: true,
@@ -27,7 +26,7 @@
                 { field: 'pilots' },
                 { field: 'cost_in_credits' },
                 //TODO: $event.stopPropogation & grid.appScope.hs.clickUrl()
-                { field: 'url', name: 'INFO', cellTemplate: '<a ng-click="hs.clickUrl(row.entity.name, row.entity.model, row.entity.manufacturer)">' + '{{ row.entity.url }}' + '</a>' }
+                { field: 'url', name: 'INFO', cellTemplate: '<a ng-click="grid.appScope.hc.clickUrl(row.entity.name, row.entity.model, row.entity.manufacturer);$event.stopPropogation();">' + '{{ row.entity.url }}' + '</a>' }
             ],
             paginationPageSizes: [25, 50, 75],
             paginationPageSize: 25
@@ -37,12 +36,7 @@
             hs.myGrid.data = data;
         });
 
-        function clickUrl() {
-            $scope.ngDialog.open({
-                template: '<p>URL INFO</p>',
-                plain: true
-            });
-        }
+
 
         // private function
         function getData() {
