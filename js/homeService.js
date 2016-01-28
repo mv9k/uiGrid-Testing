@@ -26,6 +26,7 @@
                 { field: 'crew' },
                 { field: 'pilots' },
                 { field: 'cost_in_credits' },
+                //TODO: $event.stopPropogation & grid.appScope.hs.clickUrl()
                 { field: 'url', name: 'INFO', cellTemplate: '<a ng-click="hs.clickUrl(row.entity.name, row.entity.model, row.entity.manufacturer)">' + '{{ row.entity.url }}' + '</a>' }
             ],
             paginationPageSizes: [25, 50, 75],
@@ -37,7 +38,7 @@
         });
 
         function clickUrl() {
-            ngDialog.open({
+            $scope.ngDialog.open({
                 template: '<p>URL INFO</p>',
                 plain: true
             });

@@ -14,7 +14,6 @@
 
         hc.openDialog = openDialog;
 
-
         function openDialog() {
             ngDialog.open({
                 template: '<p>my template</p>',
