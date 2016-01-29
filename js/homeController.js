@@ -25,7 +25,14 @@
 
         function clickUrl() {
             ngDialog.open({
-                template: '<p>URL INFO</p>',
+                template:
+                    '<h1>URL INFO</h1>' +
+                    '<hr>' +
+                    '<ul>' +
+                    '<li>List item 1</li>' +
+                    '<li>List item 2</li>' +
+                    '<li>List item 3</li>' +
+                    '</ul>',
                 plain: true
             });
         }

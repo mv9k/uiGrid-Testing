@@ -25,7 +25,6 @@
                 { field: 'crew' },
                 { field: 'pilots' },
                 { field: 'cost_in_credits' },
-                //TODO: $event.stopPropogation & grid.appScope.hs.clickUrl()
                 { field: 'url', name: 'INFO', cellTemplate: '<a ng-click="grid.appScope.hc.clickUrl(row.entity.name, row.entity.model, row.entity.manufacturer);$event.stopPropogation();">' + '{{ row.entity.url }}' + '</a>' }
             ],
             paginationPageSizes: [25, 50, 75],
